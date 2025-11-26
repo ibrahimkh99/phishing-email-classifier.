@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f8fb;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 820px;
+  margin: 36px auto;
+  background: white;
+  padding: 28px;
+  box-shadow: 0 6px 18px rgba(23, 33, 64, 0.08);
+  border-radius: 8px;
+}
+h1 { margin-top: 0; }
+.lead { color: #555; margin-bottom: 18px; }
+textarea {
+  width: 100%;
+  min-height: 260px;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #d7dce6;
+  border-radius: 6px;
+  resize: vertical;
+}
+.controls {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { opacity: 0.95; }
+.result { margin-top: 18px; padding: 14px; border-radius: 6px; background: #fafbfd; }
+.badge {
+  display: inline-block;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.badge.phishing { background: #dc2626; } /* red */
+.badge.ham { background: #059669; } /* green */
+.probs { margin-top: 10px; color: #333; }
+.flash { padding: 8px 10px; border-radius: 6px; margin-bottom: 8px; }
+.flash.danger { background: #fee2e2; color: #991b1b; }
+.flash.warning { background: #fff7ed; color: #7c2d12; }
+.note.warning { background: #fff4e5; padding: 10px; border-radius: 6px; color: #7a4300; margin-bottom: 12px; }
+.disclaimer { font-size: 13px; color: #555; }

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phishing Email Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Phishing Email Classifier</h1>
+      <p class="lead">Paste an email (subject + body) below and click Classify. This tool is educational only.</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-area">
+        {% for category, msg in messages %}
+          <div class="flash {{ category }}">{{ msg }}</div>
+        {% endfor %}
+        </div>
+      {% endif %}
+      {% endwith %}
+
+      {% if model_missing %}
+        <div class="note warning">Model not found. Run <code>python app.py train</code> to train the model.</div>
+      {% endif %}
+
+      <form method="post">
+        <textarea name="email_text" placeholder="Paste full email text here...">{{ email_text|default("") }}</textarea>
+        <div class="controls">
+          <button type="submit" class="btn">Classify</button>
+        </div>
+      </form>
+
+      {% if result %}
+      <div class="result">
+        {% if result.label == 'phishing' %}
+          <div class="badge phishing">PHISHING</div>
+        {% else %}
+          <div class="badge ham">HAM (legitimate)</div>
+        {% endif %}
+        <div class="probs">
+          <div>Phishing probability: <strong>{{ '%.3f'|format(result.phishing_prob) }}</strong></div>
+          <div>Ham probability: <strong>{{ '%.3f'|format(result.ham_prob) }}</strong></div>
+        </div>
+        <h3>Why this might be phishing</h3>
+        {% if result.cues %}
+          <ul>
+            {% for c in result.cues %}
+              <li>{{ c }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No obvious phishing-like patterns were detected by simple rules.</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <hr>
+      <p class="disclaimer">
+        <strong>Disclaimer:</strong> This tool is for educational purposes only. Do not rely solely on automated tools to make security decisions.
+      </p>
+    </div>
+  </body>
+  </html>
