@@ -22,5 +22,5 @@ Thumbs.db
 # IDE
 .vscode/
 
-# Model artifacts (optional: already committed if you want)
-# /models/
+# Model artifacts (large binaries tracked via GitHub Releases)
+models/

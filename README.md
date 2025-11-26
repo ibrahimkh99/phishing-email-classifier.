@@ -28,7 +28,9 @@ pip install -r requirements.txt
 
 Quick run (no training required)
 
-If you just want to run the web UI and try the classifier, the repository already includes a cleaned dataset and a saved model. You can skip data preparation and training.
+If you just want to run the web UI and try the classifier, the repository includes a cleaned dataset. You will need to download the saved model from the GitHub Releases.
+
+1. Clone and set up the project:
 
 Windows (PowerShell)
 ```powershell
@@ -37,9 +39,6 @@ cd phishing-email-classifier
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-
-# Start the web UI (uses the saved model in `models/`)
-python app.py runserver --host 127.0.0.1 --port 5000
 ```
 
 macOS / Linux
@@ -49,6 +48,15 @@ cd phishing-email-classifier
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+2. Download the saved model:
+   - Go to [Releases](../../releases) and download `phishing_model.joblib`.
+   - Place it in the `models/` directory (create the directory if it doesn't exist).
+
+3. Run the web UI:
+
+```powershell
 python app.py runserver --host 127.0.0.1 --port 5000
 ```
 
@@ -153,4 +161,4 @@ Contributions are welcome. Open an issue or submit a pull request with improveme
 
 ## License
 
-This repository is provided under the MIT License. See `LICENSE` for details.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
